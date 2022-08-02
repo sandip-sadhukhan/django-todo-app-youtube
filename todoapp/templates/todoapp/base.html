@@ -16,6 +16,18 @@
     {% include 'todoapp/components/navbar.html' %}
     <!-- Navbar End -->
 
+    <!-- Messages -->
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'error' %}
+         <div class="alert alert-danger">{{message}}</div>
+        {% elif message.tags == 'success' %}
+         <div class="alert alert-success">{{message}}</div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <!-- Messages end -->
+
     <div class="container my-4">{% block content %}{% endblock %}</div>
 
     <!-- Footer -->
