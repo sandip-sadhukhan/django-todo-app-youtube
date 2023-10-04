@@ -17,9 +17,12 @@
       <ul class="list-group">
         {% for todo in todos %}
         <li class="list-group-item">
-          <div class="d-flex justify-content-between">
-            <span>{{ todo.text }}</span>
-            <a class="btn btn-danger btn-sm" href="{% url 'deleteTodo' todo.id %}">X</a>
+          <div class="d-flex justify-content-between mb-2">
+            <div class="task-description">{{ todo.text }}</div>
+            <div>
+            <a class="btn btn-danger btn-sm" href="{% url 'deleteTodo' todo.id %}">Delete</a>
+            <a class="btn btn-success btn-sm ml-2" href="{% url 'updateTodo' todo.id %}">Update</a>
+          </div>
           </div>
         </li>
         {% endfor %}
