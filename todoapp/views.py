@@ -21,6 +21,23 @@ def deleteTodo(request, id):
     return redirect('/')
 
 
+def updateTodo(request, id):
+    todo = Todo.objects.get(id=id)
+
+    if request.method == 'POST':
+        text = request.POST.get("text").strip()
+        if text:
+            todo.text = text
+            todo.save()
+            return redirect('/')
+    
+    context = {
+        'todo': todo
+    }
+    return render(request, 'todoapp/update_todo.html', context)
+
+
+
 def about(request):
     return render(request, 'todoapp/about.html')
 
